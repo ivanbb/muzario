@@ -15,12 +15,12 @@ class CreateSongsTable extends Migration
     {
         Schema::create('songs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name', 255);
-            $table->bigInteger('author_id')->nullable();
+            $table->bigInteger('author_id')->nullable()->unsigned();
             $table->foreign('author_id')->references('id')->on('authors');
-            $table->bigInteger('genre_id')->nullable();
+            $table->bigInteger('genre_id')->nullable()->unsigned();
             $table->foreign('genre_id')->references('id')->on('genres');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

@@ -15,9 +15,9 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('song_id');
+            $table->bigInteger('song_id')->unsigned();
             $table->foreign('song_id')->references('id')->on('songs');
-            $table->bigInteger('playlist_id');
+            $table->bigInteger('playlist_id')->unsigned();
             $table->foreign('playlist_id')->references('id')->on('playlists');
             $table->bigInteger('pos_id');
         });
