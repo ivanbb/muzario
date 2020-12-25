@@ -13,7 +13,12 @@ class InsertDefaultGenre extends Migration
     {
         DB::table('genres')->insert(
             array(
-                'name' => 'none',
+                'name' => 'None',
+            )
+        );
+        DB::table('authors')->insert(
+            array(
+                'name' => 'None',
             )
         );
     }
@@ -25,8 +30,7 @@ class InsertDefaultGenre extends Migration
      */
     public function down()
     {
-        DB::table('genres')->delete(
-            DB::table('genres')->select('id')->where('name', '=', 'none')
-        );
+        DB::table('genres')->where('name', '=', 'none')->delete();
+        DB::table('authors')->where('name', '=', 'none')->delete();
     }
 }
